@@ -24,8 +24,13 @@ Route::get('/contacto', function () {
 
 
 use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\ProductoController;
 
 Route::get('/personas', [PersonaController::class, 'index']);
+
+
+
+Route::get('/productos',[ProductoController::class,'index']) ->name('productos.index');
 
 
 
