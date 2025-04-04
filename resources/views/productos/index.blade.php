@@ -1,34 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Lista de Productos</title>
-</head>
-<body>
+@extends('layout')
+
+@section('title','productos')
+
+@section('content')
     <h1>Productos Disponibles</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Stock</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($productos as $producto)
+        <table>
+            <thead>
                 <tr>
-                    <th>{{ $producto->id }}</th>
-                    <td>{{ $producto->nombre }}</td>
-                    <td>${{ $producto->precio }}</td>
-                    <td>{{ $producto->stock }}</td>
-                    <td>
-                        <button>Editar</button>
-                        <button>Eliminar</button>
-                    </td>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Acciones</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-</body>
-</html>
+            </thead>
+            <tbody>
+                @foreach($productos as $producto)
+                    <tr>
+                        <th>{{ $producto->id }}</th>
+                        <td>{{ $producto->nombre }}</td>
+                        <td>${{ $producto->precio }}</td>
+                        <td>{{ $producto->stock }}</td>
+                        <td>
+                            <button>Editar</button>
+                            <button>Eliminar</button>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+@endsection
+

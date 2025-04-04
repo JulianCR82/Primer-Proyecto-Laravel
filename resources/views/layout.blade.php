@@ -77,7 +77,7 @@
 </head>
 <body>
     <header>
-        <h1>Header de la aplicacion</h1>
+        <h1>Ecommerce</h1>
     </header>
 
     <main>
