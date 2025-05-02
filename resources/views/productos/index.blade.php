@@ -3,7 +3,19 @@
 @section('title','productos')
 
 @section('content')
+
+
+@if(session('success'))
+<div>{{ session('success') }}</div>
+@endif
+
+@if(session('error'))
+    <div>{{ session('error') }}</div>
+@endif
+
     <h1>Productos Disponibles</h1>
+    <a href="{{ route('productos.create') }}">Registrar nuevo producto</a>
+
         <table>
             <thead>
                 <tr>
