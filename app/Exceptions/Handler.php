@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Http\Request;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -44,5 +46,23 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    /**
+     * Handle unauthenticated exceptions and return a JSON response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Auth\AuthenticationException  $exception
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        // Verificamos si la solicitud espera un JSON
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'No autenticado. Token inválido o no proporcionado.'], 401);
+        }
+
+        // Por defecto, se podría redirigir a la ruta 'login', pero en este caso no existe
+        return response()->json(['error' => 'No autenticado. Ruta de login no configurada.'], 401);
     }
 }
